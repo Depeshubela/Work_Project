@@ -1,34 +1,182 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+ <title>Black & White</title>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--下行為前端的Bootstrap框架設定-->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+ <!-- meta -->
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
 
+ <!-- css -->
+ <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}" rel="external nofollow" rel="external nofollow" >
+ <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="external nofollow" rel="external nofollow" rel="external nofollow" >
+ <link rel="stylesheet" href="{% static 'blog/css/pace.css' %}" rel="external nofollow" rel="external nofollow" >
+ <link rel="stylesheet" href="{% static 'blog/css/custom.css' %}" rel="external nofollow" >
 
-
+ <!-- js -->
+ <script src="{% static 'blog/js/jquery-2.1.3.min.js' %}"></script>
+ <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+ <script src="{% static 'blog/js/pace.min.js' %}"></script>
+ <script src="{% static 'blog/js/modernizr.custom.js' %}"></script>
 </head>
-{% block content %}{% endblock %}
+       
+<script src="{% static 'blog/js/script.js' %}"></script>
 <body>
-  <div class="container-fluid" >
-    <div class="row" >
-      <div class="col-sm-2"  > <!--style="text-align:center"-->
-      {% block sidebar %} <!--側邊攔-->
-    
-    <ul class="list-unstyled fw-normal pb-2"> <!--此ul用來控制側邊欄樣板-->  
-      <li><a href="{% url 'index' %}">&ensp;&emsp;&emsp;Home</a></li>
-      <li><a href="{% url 'login' %}">&ensp;&emsp;&emsp;Login</a></li>
-      <li><a href="{% url 'logout' %}">&ensp;&emsp;&emsp;Logout</a></li>
-      <hr>
-    </ul>
+<div class="container">
+    <header id="site-header">
+        <div class="row">
+            <div class="col-md-4 col-sm-5 col-xs-8">
+                <div class="logo">
+                    <h1><a href=""><b>Black</b> &amp; White</a></h1>
+                </div>
+            </div><!-- col-md-4 -->
+            <div class="col-md-8 col-sm-7 col-xs-4">
+                <nav class="main-nav" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" id="trigger-overlay" class="navbar-toggle">
+                            <span class="ion-navicon"></span>
+                        </button>
+                    </div>
 
-  {% endblock %}
-    <div class="col-sm ">
-    
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="cl-effect-11"><a href="{% url 'index' %}">首頁</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'register' %}">註冊</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'login' %}">登入</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'logout' %}">登出</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </nav>
+                <div id="header-search-box">
+                    <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
+                    <div id="search-form" class="search-form">
+                        <form role="search" method="get" id="searchform" action="#">
+                            <input type="search" placeholder="搜索" required>
+                            <button type="submit"><span class="ion-ios-search-strong"></span></button>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- col-md-8 -->
+        </div>
+    </header>
+</div>
+<!--
+<div class="copyrights">Collect from <a href="http://www.cssmoban.com/">网页模板</a></div>
+<div class="copyrights">Modified by <a href="http://zmrenwu.com/">追梦人物的博客</a></div>
+-->
+<div class="content-body">
+    <div class="container">
+        <div class="row">
+          <main class="col-md-8">
+          {% block content %}{% endblock %}
+            </main>
+            <aside class="col-md-4">
+                <div class="widget widget-recent-posts">
+                    <h3 class="widget-title">最新文章</h3>
+                    {% for post in post_list %}
+                    <ul>
+                        <li>
+                            <a href="#">{{ post.title }}</a>
+                        </li>
+                    </ul>
+                    {%endfor%}
+                </div>
+               
+                <div class="widget widget-archives">
+                    <h3 class="widget-title">熱門文章</h3>
+                    <ul>
+                      {% for hotpost in hot_post %}
+                        <li>
+                            <a href="#">{{hotpost}}</a>
+                        </li>
+                        {%endfor%}
+                    </ul>
+                </div>
+
+                <div class="widget widget-category">
+                    <h3 class="widget-title">分类</h3>
+                    <ul>
+                        {% for genre in genre %}
+                        <li>
+                            <a href="#">{{genre}}<span class="post-count">({{genre.total}})</span></a>
+                        </li>
+                        {%endfor%}
+
+                    </ul>
+                </div>
+
+                <div class="widget widget-tag-cloud">
+                    <h3 class="widget-title">标签云</h3>
+                    <ul>
+                        <li>
+                            <a href="#">Django</a>
+                        </li>
+                        <li>
+                            <a href="#">Python</a>
+                        </li>
+                        <li>
+                            <a href="#">Java</a>
+                        </li>
+                        <li>
+                            <a href="#">笔记</a>
+                        </li>
+                        <li>
+                            <a href="#">文档</a>
+                        </li>
+                        <li>
+                            <a href="#">AngularJS</a>
+                        </li>
+                        <li>
+                            <a href="#">CSS</a>
+                        </li>
+                        <li>
+                            <a href="#">JavaScript</a>
+                        </li>
+                        <li>
+                            <a href="#">Snippet</a>
+                        </li>
+                        <li>
+                            <a href="#">jQuery</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="rss">
+                    <span class="ion-social-rss-outline">來訪人數{{ num_visits }}</span>
+                </div>
+            </aside>
+        </div>
     </div>
-  </div>
+</div>
+<!--
+<footer id="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="copyright">&copy 2017 - 采集自<a href="http://www.cssmoban.com/"
+                                                        target="_blank" title="模板之家">模板之家</a>
+                    - 由<a href="http://zmrenwu.com/" title="网页模板" target="_blank">追梦人物的博客</a>修改
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+ Mobile Menu -->
+<div class="overlay overlay-hugeinc">
+    <button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
+    <nav>
+        <ul>
+            <li><a href="">首頁</a></li>
+            <li><a href="{% url 'register' %}">註冊</a></li>
+            <li><a href="{% url 'login' %}">登入</a></li>
+            <li><a href="{% url 'logout' %}">登出</a></li>
+        </ul>
+    </nav>
+</div>
+
+<script src="js/script.js"></script>
+
 </body>
 </html>
-

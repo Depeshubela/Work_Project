@@ -1,29 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
+    
 
-{% for post in post_list %}
+
+
+{% if post %}
 <article class="post post-{{ post.pk }}">
     <header class="entry-header">
         <h1 class="entry-title">{{ post.title }}</a>
+            
+            <div class="entry-meta"><span class="post-category"><a href="#">分類{% for g in post.genre.all %}{{g}}{%endfor%}</a></span>
+                <span class="post-date"><a href="#"><time class="entry-date"
+                    datetime="2012-11-09T23:15:57+00:00">發布時間{{ post.created_time }}</time></a></span>
+                <span class="post-author"><a>作者{{post.author}}</a></span>
+                <span class="comments-link"><a>評論數</a></span>
+                <span class="views-count"><a>閱讀次數{{post.times}}</a></span>
+            </div>
         </h1>
-        <div class="entry-meta">
-            <span class="post-category"><a href="#">分類{% for g in post.genre.all %}{{g}}{%endfor%}</a></span>
-            <span class="post-date"><a href="#"><time class="entry-date"
-                datetime="2012-11-09T23:15:57+00:00">發布時間{{ post.created_time }}</time></a></span>
-            <span class="post-author"><a href="#">作者{{post.author}}</a></span>
-            <span class="comments-link"><a>評論數</a></span>
-            <span class="views-count"><a>閱讀次數{{post.times}}</a></span>
-        </div>
     </header>
     <div class="entry-content clearfix">
-        <p>{{post.body|truncatechars:70}}</p>
-        <div class="read-more cl-effect-14">
-            <a href="{% url 'post-id' post.pk %}" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
-        </div>
+        <p>{{post.body}}</p>
     </div>
 </article>
 <!--<div class="no-post">暫時還沒有釋出的文章！</div>-->
-{% endfor %}
+{% endif %}
 <!-- 简单分页效果
 <div class="pagination-simple">
     <a href="#">上一页</a>
@@ -45,4 +45,5 @@
     </ul>
 </div>
 -->
+           
 {% endblock %}

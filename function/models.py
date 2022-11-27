@@ -1,19 +1,35 @@
 from django.db import models
 from django.contrib.auth.models import (
 	 BaseUserManager, AbstractBaseUser	)
+from django.urls import reverse
+
+class Genre(models.Model):
+    name = models.CharField(max_length=200)
+    total = models.IntegerField(null=True, blank=True)
+    def __str__(self):
+        return self.name
+
+
+
 #使用者資料
 class Post (models.Model):
     title = models.CharField(max_length=20)
     author = models.CharField(max_length=20,default=None)
+    genre = models.ForeignKey(Genre,on_delete=models.SET_NULL, null=True, help_text='Select a genre for this book')
     body = models.TextField(max_length=999,default="")
     created_time = models.DateTimeField(null=True, blank=True)
     modified_time = models.DateTimeField(null=True, blank=True)
-    
+    times = models.IntegerField(default=0)
     def __str__(self):
         return self.title
+
+        #回傳一個存取此資料的url給html
+    def get_absolute_url(self):
+        #reverse實現動態網址，urls.py改變即可變全部
+        return reverse('post-id', args=[str(self.id)]) 
+
+
     
-
-
 #繼承django預設的的使用者介面並更改用戶創建資料
 class AccountManager(BaseUserManager):
     
