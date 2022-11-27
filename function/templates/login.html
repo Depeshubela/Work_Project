@@ -1,0 +1,26 @@
+
+<body style="text-align:center">
+    <h1>登入</h1>
+
+    <form class="Inputs" method="POST" >
+        {% csrf_token %}
+        <label for="username">用戶名稱:</label>
+        <input type="text" name="username" value="" id="username"> <br/>
+        {{form.errors.username}}
+        <label for="password">用戶密碼:</label>
+        <input type="password" name="password" value="" id="password"> <br/>
+        <input type="submit" value="登入" />
+        {{form.errors.password}}
+        <p>還沒有帳號嗎? <a href="{% url 'register' %}">註冊</a></p>
+    </form>
+
+    {% if form.errors %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+
+</body>

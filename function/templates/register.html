@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Demo</title>
+</head>
+<link rel="stylesheet" href="{% static 'temp/register_css.css' %}" rel="external nofollow" >
+<body style="text-align:center" >
+    <h1>Register</h1>
+        <form class="Inputs" method="POST">
+            {% csrf_token %}
+
+            <div class="display-flex">
+                <div class="box">
+                    <p><label for="username">帳號</label>
+                    <input type='username' id="username" name="username"/></p>
+                    <div class="trs">{{form.errors.username}}</div>
+                </div>
+            </div>
+
+            <div class="display-flex">
+                <div class="box">
+                    <p><label for="email">電子信箱</label>
+                    <input type='email' id="email" name="email" placeholder="example@email.com"/></p>
+                    <div class="trs">{{form.errors.email}}</div>
+                </div>
+            </div>
+
+            <div class="display-flex">
+                <div class="box">
+                    <p><label for="date">生日</label>
+            <input type='date' id="date_of_birth" name="date_of_birth"/></p>
+            <div class="trs">{{form.errors.date_of_birth}}</div>
+                </div>
+            </div>
+
+            <div class="display-flex">
+                <div class="box">
+                    <p><label for="pswd">密碼</label>
+            <input type='password' id="pswd" name="password1" placeholder="8位數以上英文數字組合" /></p>
+            <div class="trs">{{form.errors.password1}}</div>
+                </div>
+            </div>
+
+            <div class="display-flex">
+                <div class="box">
+                    <p><label for="cofirm_pswd">確認密碼</label>
+            <input type='password' id="cofirm_pswd" name="password2" value=""/></p>
+            <div class="trs">{{form.errors.password2}}</div>
+                </div>
+            </div>
+
+            <button type="submit">註冊</button>
+        </form>
+    
+</body>
+ 
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--下行為前端的Bootstrap框架設定-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+
+</head>
+{% block content %}{% endblock %}
+<body>
+  <div class="container-fluid" >
+    <div class="row" >
+      <div class="col-sm-2"  > <!--style="text-align:center"-->
+      {% block sidebar %} <!--側邊攔-->
+    
+    <ul class="list-unstyled fw-normal pb-2"> <!--此ul用來控制側邊欄樣板-->  
+      <li><a href="{% url 'index' %}">&ensp;&emsp;&emsp;Home</a></li>
+      <li><a href="{% url 'login' %}">&ensp;&emsp;&emsp;Login</a></li>
+      <li><a href="{% url 'logout' %}">&ensp;&emsp;&emsp;Logout</a></li>
+      <hr>
+    </ul>
+
+  {% endblock %}
+    <div class="col-sm ">
+    
+    </div>
+  </div>
+</body>
+</html>
+

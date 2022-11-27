@@ -1,0 +1,16 @@
+.display-flex {
+    display: flex;
+  }
+
+ul li{
+    list-style-type:none;
+}
+
+
+.box{
+  margin: 0 auto;/*區塊置中*/
+}
+.trs{
+    position:relative;
+    right: 15px;
+}
