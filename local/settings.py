@@ -78,10 +78,10 @@ WSGI_APPLICATION = 'local.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',  #PostgreSQL
-        'NAME': 'UsersData',  #資料庫名稱
-        'USER': 'postgres',  #資料庫帳號
-        'PASSWORD': 'joy50923',  #資料庫密碼
-        'HOST': 'localhost',  #Server(伺服器)位址
+        'NAME': 'dfcoadhf47jppl',  #資料庫名稱
+        'USER': 'pevhejgfzgogsk',  #資料庫帳號
+        'PASSWORD': 'IY05p6XVEHUWqofCqPqap1COYljVODom',  #資料庫密碼
+        'HOST': 'dpg-cdmun02en0hreuh42n20-a',  #Server(伺服器)位址
         'PORT': '5432'  #PostgreSQL Port號
     }
 }
