@@ -20,7 +20,7 @@ cycler==0.10.0
 DateTime==4.3
 decorator==5.1.1
 distlib==0.3.1
-Django==3.12.6
+Django==3.2.16
 django-extra-views==0.14.0
 django-mongoengine==0.5.4
 django-rest-framework-mongoengine==3.4.1
