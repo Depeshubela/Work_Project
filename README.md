@@ -34,7 +34,7 @@
 下圖頁面為當使用者點入某文章後所進入文章閱讀頁面。  
 ![readpost](https://user-images.githubusercontent.com/87916115/204293949-3f2726f9-f8cc-41fa-a9e2-c70dc975433e.png)
 
-最後是使用者後台介面，目前構想主要功能將包含貼文與帳號密碼信箱管理，貼文是以CreateView功能實現。在創作新文章時使用者只會顯示title、genre、body三個輸入欄位，其他還有部分隱藏欄位如author固定是此帳號使用者名稱，故設計為會在使用者發布文章後由函數form_valid自動新增至資料庫，其他還有部分功能亦同此理做法。  
+最後是使用者後台介面，目前構想主要功能將包含貼文與帳號密碼信箱管理，後續也許會新增上傳圖片、檔案的功能。貼文是以CreateView功能實現。在創作新文章時使用者只會顯示title、genre、body三個輸入欄位，其他還有部分隱藏欄位如author固定是此帳號使用者名稱，故設計為會在使用者發布文章後由函數form_valid自動新增至資料庫，其他還有部分功能亦同此理做法。  
 ![homepage](https://user-images.githubusercontent.com/87916115/204299242-dda93e96-ef69-49ab-81a2-caf402a6bb25.png)
 
 
