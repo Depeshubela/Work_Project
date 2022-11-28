@@ -7,7 +7,7 @@
         <h1 class="entry-title">{{ post.title }}</a>
         </h1>
         <div class="entry-meta">
-            <span class="post-category"><a href="#">分類{% for g in post.genre.all %}{{g}}{%endfor%}</a></span>
+            <span class="post-category"><a href="#">分類{{post.genre_name}}</a></span>
             <span class="post-date"><a href="#"><time class="entry-date"
                 datetime="2012-11-09T23:15:57+00:00">發布時間{{ post.created_time }}</time></a></span>
             <span class="post-author"><a href="#">作者{{post.author}}</a></span>
@@ -18,7 +18,7 @@
     <div class="entry-content clearfix">
         <p>{{post.body|truncatechars:70}}</p>
         <div class="read-more cl-effect-14">
-            <a href="{% url 'post-id' post.pk %}" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
+            <a href="{% url 'post-id' post.pk %}" class="more-link">繼續閱讀 <span class="meta-nav">→</span></a>
         </div>
     </div>
 </article>

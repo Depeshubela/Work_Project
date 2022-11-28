@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm , AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import password_validation
 from django.utils.translation import gettext_lazy as _
-from .models import User
+from .models import User,Post
 '''
 #widget與attrs可以更改顯示效果(類似前端工程)
 class LoginForm(AuthenticationForm):
@@ -84,3 +84,15 @@ class RegisterForm(UserCreationForm):
             return email
     
         raise forms.ValidationError(f'{email} 已被註冊')
+    
+
+'''
+class PostForm(forms.ModelForm):
+    author = forms.DecimalField(max_digits=10, decimal_places=10, disabled=True,blank=True,null=True,)
+    genre_name = forms.DecimalField(max_digits=10, decimal_places=10, disabled=True,widget=forms.HiddenInput())
+    created_time = forms.DecimalField(max_digits=10, decimal_places=10, disabled=True)
+    modified_time = forms.DecimalField(max_digits=10, decimal_places=10, disabled=True)
+    times = forms.DecimalField(max_digits=10, decimal_places=10, disabled=True,widget=forms.HiddenInput())
+    class Meta:
+        model = Post
+        fields = '__all__'  '''

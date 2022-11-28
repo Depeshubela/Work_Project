@@ -1,0 +1,114 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Black & White</title>
+
+ <!-- meta -->
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ <!-- css -->
+ <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}" rel="external nofollow" rel="external nofollow" >
+ <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="external nofollow" rel="external nofollow" rel="external nofollow" >
+ <link rel="stylesheet" href="{% static 'blog/css/pace.css' %}" rel="external nofollow" rel="external nofollow" >
+ <link rel="stylesheet" href="{% static 'blog/css/custom.css' %}" rel="external nofollow" >
+
+ <!-- js -->
+ <script src="{% static 'blog/js/jquery-2.1.3.min.js' %}"></script>
+ <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+ <script src="{% static 'blog/js/pace.min.js' %}"></script>
+ <script src="{% static 'blog/js/modernizr.custom.js' %}"></script>
+</head>
+       
+<script src="{% static 'blog/js/script.js' %}"></script>
+<body>
+<div class="container">
+    <header id="site-header">
+        <div class="row">
+            <div class="col-md-4 col-sm-5 col-xs-8">
+                <div class="logo">
+                    <h1><a href="{% url 'index' %}"><b>Black</b> &amp; White</a></h1>
+                </div>
+            </div><!-- col-md-4 -->
+            <div class="col-md-8 col-sm-7 col-xs-4">
+                <nav class="main-nav" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" id="trigger-overlay" class="navbar-toggle">
+                            <span class="ion-navicon"></span>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="cl-effect-11"><a href="{% url 'index' %}">首頁</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'userhomepage' user.pk %}">{{user.username}}</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'logout' %}">登出</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </nav>
+                <div id="header-search-box">
+                    <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
+                    <div id="search-form" class="search-form">
+                        <form role="search" method="get" id="searchform" action="#">
+                            <input type="search" placeholder="搜索" required>
+                            <button type="submit"><span class="ion-ios-search-strong"></span></button>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- col-md-8 -->
+        </div>
+    </header>
+</div>
+<!--
+<div class="copyrights">Collect from <a href="http://www.cssmoban.com/">网页模板</a></div>
+<div class="copyrights">Modified by <a href="http://zmrenwu.com/">追梦人物的博客</a></div>
+-->
+<div class="content-body">
+    <div class="container">
+        <div class="row">
+            <main class="col-md-5">
+                <aside class="col-md-4">    
+                    <div class="widget widget-archives">
+                        <h3 class="widget-title">归档</h3>
+                        <ul>
+                            <li>
+                                <a href="#">2017 年 5 月</a>
+                            </li>
+                            <li>
+                                <a href="#">2017 年 4 月</a>
+                            </li>
+                            <li>
+                                <a href="#">2017 年 3 月</a>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <div class="widget widget-category">
+                        <h3 class="widget-title">分類</h3>
+                        <ul>
+                            <li>
+                                <a href="#">Django 博客教程 <span class="post-count">(13)</span></a>
+                            </li>
+                            <li>
+                                <a href="#">Python 教程 <span class="post-count">(11)</span></a>
+                            </li>
+                            <li>
+                                <a href="#">Django 用户认证 <span class="post-count">(8)</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+            </main>
+            {% block content %}{% endblock %}
+
+        </div>
+    </div>
+</div>
+
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

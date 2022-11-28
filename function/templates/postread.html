@@ -3,13 +3,12 @@
     
 
 
-
 {% if post %}
 <article class="post post-{{ post.pk }}">
     <header class="entry-header">
         <h1 class="entry-title">{{ post.title }}</a>
             
-            <div class="entry-meta"><span class="post-category"><a href="#">分類{% for g in post.genre.all %}{{g}}{%endfor%}</a></span>
+            <div class="entry-meta"><span class="post-category"><a href="#">分類{{post.genre_name}}</a></span>
                 <span class="post-date"><a href="#"><time class="entry-date"
                     datetime="2012-11-09T23:15:57+00:00">發布時間{{ post.created_time }}</time></a></span>
                 <span class="post-author"><a>作者{{post.author}}</a></span>
