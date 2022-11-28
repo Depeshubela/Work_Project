@@ -22,6 +22,8 @@ SECRET_KEY = 'django-insecure-&v!x8c5sof0mvn^0(4tk%j!z7!f2&6vaa&d%6m13b04vj5)5)6
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+#DEBUG = True
+
 
 ALLOWED_HOSTS = []
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
@@ -97,7 +99,8 @@ DATABASES = {
         'HOST': 'localhost',  #Server(伺服器)位址
         'PORT': '5432'  #PostgreSQL Port號
     }
-}'''
+}
+'''
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -132,7 +135,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
