@@ -1,0 +1,21 @@
+DATABASES : 
+        name: dfcoadhf47jppl
+        databaseName: test
+        user: pevhejgfzgogsk
+    
+
+services:
+  - type: web
+    name: WorkProject
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn local.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: WorkProject
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
