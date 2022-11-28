@@ -4,15 +4,15 @@
 <html>
 <head>
  <title>Black & White</title>
-
+ <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
  <!-- meta -->
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
 
  <!-- css -->
- <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}" rel="external nofollow" rel="external nofollow" >
- <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="external nofollow" rel="external nofollow" rel="external nofollow" >
- <link rel="stylesheet" href="{% static 'blog/css/pace.css' %}" rel="external nofollow" rel="external nofollow" >
+ <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}" rel="external nofollow"  >
+ <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="external nofollow" >
+ <link rel="stylesheet" href="{% static 'blog/css/pace.css' %}" rel="external nofollow" >
  <link rel="stylesheet" href="{% static 'blog/css/custom.css' %}" rel="external nofollow" >
 
  <!-- js -->
@@ -20,9 +20,10 @@
  <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
  <script src="{% static 'blog/js/pace.min.js' %}"></script>
  <script src="{% static 'blog/js/modernizr.custom.js' %}"></script>
-</head>
+
        
-<script src="{% static 'blog/js/script.js' %}"></script>
+ <script src="{% static 'blog/js/script.js' %}"></script>
+</head>
 <body>
 <div class="container">
     <header id="site-header">
@@ -180,7 +181,7 @@
     </nav>
 </div>
 -->
-<script src="js/script.js"></script>
 
+<script src="{% static 'blog/js/script.js' %}"></script>
 </body>
 </html>
