@@ -17,11 +17,11 @@ Jinja2==3.1.2
 jsonpickle==2.0.0
 jsonschema==4.9.1
 mongoengine==0.24.2
-numpy==1.20.2
+#numpy==1.20.2
 packaging==21.3
-pandas==1.2.4
+#pandas==1.2.4
 pefile==2021.9.3
-psycopg2==2.9.3
+#psycopg2==2.9.3
 pyinstaller==4.7
 pyinstaller-hooks-contrib==2021.4
 pymongo==3.12.3
@@ -33,4 +33,9 @@ requests-toolbelt==0.9.1
 SQLAlchemy==1.4.36
 sqlparse==0.2.4
 urllib3==1.26.4
-gunicorn==19.9.0
+gunicorn
+python-dotenv==0.21.0
+psycopg2-binary==2.9.5
+dj-database-url==1.0.0
+environs==9.5.0
+whitenoise==6.2.0

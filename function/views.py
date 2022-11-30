@@ -13,11 +13,13 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 def index(request):
     #訪問次數
+    
     num_visits = request.session.get('num_visits', 1)
     request.session['num_visits'] = num_visits + 1
     post_list = Post.objects.all().order_by('-created_time')
     hot_post = Post.objects.all().order_by('-times')
     #user_list = User.objects.all().order_by('username')
+    #if request.method == 'POST':
     for i in range(1,Genre.objects.count()+1):
         totals = Genre.objects.get(id=i)
         totals.total = Post.objects.filter(genre_id=i).count()
@@ -38,7 +40,7 @@ def index(request):
     
     #total = Post.genre.through.objects.filter(genre_id=1).count()#該種類下總數'''
     
-    return render(request, 'index.html', {'num_visits': num_visits, 'post_list': post_list,'genre':genre,'hot_post':hot_post,'totals':totals})
+    return render(request, 'index.html', {'num_visits': num_visits, 'post_list': post_list,'genre':genre,'hot_post':hot_post})
 
 
 

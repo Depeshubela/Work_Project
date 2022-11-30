@@ -26,4 +26,4 @@ urlpatterns = [
     path('accounts/',include('function.accounts_urls')),
     path('', RedirectView.as_view(url='/index/', permanent=True)), 
     
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

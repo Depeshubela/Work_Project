@@ -9,11 +9,18 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 # Don't forget to import os at the beginning of the file
 import os
 from pathlib import Path
+from pathlib import Path
+from dotenv import load_dotenv
+import dj_database_url
+from environs import Env 
 
+env = Env()  # new
+env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+load_dotenv(BASE_DIR / '.env')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -21,13 +28,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&v!x8c5sof0mvn^0(4tk%j!z7!f2&6vaa&d%6m13b04vj5)5)6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-#DEBUG = True
+#DEBUG = False
+DEBUG = True
 
 
-ALLOWED_HOSTS = []
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "workproject.fly.dev"]  # new
+CSRF_TRUSTED_ORIGINS = ["https://workproject.fly.dev"]
+#ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
+#CSRF_TRUSTED_ORIGINS = ["workproject.fly.dev"]
+
+
+#RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+#if RENDER_EXTERNAL_HOSTNAME:ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
 
@@ -51,9 +64,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    #'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
-
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 ROOT_URLCONF = 'local.urls'
 
 TEMPLATES = [
@@ -78,7 +91,7 @@ WSGI_APPLICATION = 'local.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',  #PostgreSQL
@@ -89,7 +102,7 @@ DATABASES = {
         'PORT': '5432'  #PostgreSQL Port號
     }
 }
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',  #PostgreSQL
@@ -100,6 +113,27 @@ DATABASES = {
         'PORT': '5432'  #PostgreSQL Port號
     }
 }
+'''
+DATABASE_URL = os.getenv('postgres://sean940106@gmail.com::Sean50923@workproject-db.fly.dev:8000/workproject')
+DATABASES = {
+    'default': dj_database_url.config(),
+}
+#DATABASES = {
+ #   'default': dj_database_url.parse(os.environ.get('postgres://sean940106@gmail.com::Sean50923@workproject-db.fly.dev:8000/workproject'), conn_max_age=600),
+#}
+
+
+'''
+DATABASES = {
+    "default": env.dj_db_url("DATABASE_URL", default="postgres://sean940106@gmail.com::Sean50923@workproject-db.fly.dev.internal:8000"),
+}
+
+DATABASES = {
+    "default": 
+        'postgres://sean940106@gmail.com::Sean50923@workproject-db.fly.dev.internal:8000'
+    
+}
+
 '''
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -135,8 +169,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = "/app/function/static/"
 
+#STATIC_ROOT = BASE_DIR / 'data/staticfiles'
+STATIC_ROOT = "/app/function/static/"
+    # Turn on WhiteNoise storage backend that takes care of compressing static files
+    # and creating unique names for each version so they can safely be cached forever.
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
