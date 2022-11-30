@@ -14,12 +14,11 @@ from dotenv import load_dotenv
 import django_heroku    
 #env = Env()  # new
 #env.read_env()
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
+
 IS_HEROKU = "DYNO" in os.environ
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -33,21 +32,18 @@ else:
 #DEBUG = False
 DEBUG = True
 
-
-#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1:5432', 'xyp-workproject.herokuapp.com/']
+'''
+ALLOWED_HOSTS = []
 ALLOWED_HOSTS = [
     '*'
     'xyp-workproject.herokuapp.com/'
 ]
+'''
 #CSRF_TRUSTED_ORIGINS = ["https://workproject.fly.dev"]
-#ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
-#CSRF_TRUSTED_ORIGINS = ["workproject.fly.dev"]
+
 #django_heroku.settings(locals())
 
-#RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-#if RENDER_EXTERNAL_HOSTNAME:ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -94,8 +90,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'local.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+
 '''
 DATABASES = {
     'default': {
@@ -124,25 +119,16 @@ DATABASE_URL = os.getenv('postgres://sean940106@gmail.com::Sean50923@workproject
 DATABASES = {
     'default': dj_database_url.config(),
 }
-#DATABASES = {
- #   'default': dj_database_url.parse(os.environ.get('postgres://sean940106@gmail.com::Sean50923@workproject-db.fly.dev:8000/workproject'), conn_max_age=600),
-#}
-
 
 DATABASES = {
     "default": env.dj_db_url("DATABASE_URL", default="postgres://sean940106@gmail.com::Sean50923@workproject-db.fly.dev.internal:8000"),
 }
 
-DATABASES = {
-    "default": 
-        'postgres://sean940106@gmail.com::Sean50923@workproject-db.fly.dev.internal:8000'
-    
-}
+
 
 '''
 
-# Password validation
-# https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -160,8 +146,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/4.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -182,10 +166,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "function/static/")
     # Turn on WhiteNoise storage backend that takes care of compressing static files
     # and creating unique names for each version so they can safely be cached forever.
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
