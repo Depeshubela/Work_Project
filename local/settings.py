@@ -31,8 +31,8 @@ else:
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = False
 DEBUG = True
+ALLOWED_HOSTS = ['xyp-workproject.herokuapp.com','.herokuapp.com','*']
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1:5432', 'xyp-workproject.herokuapp.com/']
 '''
 ALLOWED_HOSTS = []
 ALLOWED_HOSTS = [
