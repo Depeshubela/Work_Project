@@ -42,7 +42,7 @@ ALLOWED_HOSTS = [
 #CSRF_TRUSTED_ORIGINS = ["https://workproject.fly.dev"]
 #ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
 #CSRF_TRUSTED_ORIGINS = ["workproject.fly.dev"]
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
 
 #RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 #if RENDER_EXTERNAL_HOSTNAME:ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
