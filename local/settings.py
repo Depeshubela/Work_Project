@@ -14,8 +14,8 @@ from dotenv import load_dotenv
 import dj_database_url
 from environs import Env 
 
-env = Env()  # new
-env.read_env()
+#env = Env()  # new
+#env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -33,8 +33,10 @@ DEBUG = True
 
 
 #ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "workproject.fly.dev"]  # new
-CSRF_TRUSTED_ORIGINS = ["https://workproject.fly.dev"]
+ALLOWED_HOSTS = [
+    'urexpenses.herokuapp.com/'
+]
+#CSRF_TRUSTED_ORIGINS = ["https://workproject.fly.dev"]
 #ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
 #CSRF_TRUSTED_ORIGINS = ["workproject.fly.dev"]
 
@@ -172,7 +174,7 @@ USE_TZ = True
 STATIC_URL = "function/static/"
 
 #STATIC_ROOT = BASE_DIR / 'data/staticfiles'
-STATIC_ROOT = "function/static/"
+STATIC_ROOT = STATIC_ROOT = os.path.join(BASE_DIR, "function/static/")
     # Turn on WhiteNoise storage backend that takes care of compressing static files
     # and creating unique names for each version so they can safely be cached forever.
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
