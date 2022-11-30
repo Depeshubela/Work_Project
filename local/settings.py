@@ -17,14 +17,18 @@ import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-load_dotenv(BASE_DIR / '.env')
 #STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
+IS_HEROKU = "DYNO" in os.environ
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-&v!x8c5sof0mvn^0(4tk%j!z7!f2&6vaa&d%6m13b04vj5)5)6'
 
+if IS_HEROKU:
+    ALLOWED_HOSTS = ["*"]
+else:
+    ALLOWED_HOSTS = []
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = False
 DEBUG = True
@@ -136,6 +140,7 @@ DATABASES = {
 }
 
 '''
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -173,11 +178,14 @@ USE_TZ = True
 STATIC_URL = "function/static/"
 
 #STATIC_ROOT = BASE_DIR / 'data/staticfiles'
-STATIC_ROOT = STATIC_ROOT = os.path.join(BASE_DIR, "function/static/")
+STATIC_ROOT = os.path.join(BASE_DIR, "function/static/")
     # Turn on WhiteNoise storage backend that takes care of compressing static files
     # and creating unique names for each version so they can safely be cached forever.
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
