@@ -11,9 +11,7 @@ import os
 from pathlib import Path
 from pathlib import Path
 from dotenv import load_dotenv
-import dj_database_url
-from environs import Env 
-
+import django_heroku    
 #env = Env()  # new
 #env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,7 +38,7 @@ ALLOWED_HOSTS = [
 #CSRF_TRUSTED_ORIGINS = ["https://workproject.fly.dev"]
 #ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
 #CSRF_TRUSTED_ORIGINS = ["workproject.fly.dev"]
-
+django_heroku.settings(locals())
 
 #RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 #if RENDER_EXTERNAL_HOSTNAME:ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
