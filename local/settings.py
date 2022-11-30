@@ -102,17 +102,18 @@ DATABASES = {
         'PORT': '5432'  #PostgreSQL Port號
     }
 }
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',  #PostgreSQL
-        'NAME': 'UsersData',  #資料庫名稱
-        'USER': 'postgres',  #資料庫帳號
-        'PASSWORD': 'joy50923',  #資料庫密碼
-        'HOST': 'localhost',  #Server(伺服器)位址
+        'NAME': 'd7s0et15v4en80',  #資料庫名稱
+        'USER': 'vdzmyjcaxzybtt',  #資料庫帳號
+        'PASSWORD': '303378ab428516c3047e07781491f7bd32fbbf8eaa348d5bab1560632710e96a',  #資料庫密碼
+        'HOST': 'ec2-3-229-161-70.compute-1.amazonaws.com',  #Server(伺服器)位址
         'PORT': '5432'  #PostgreSQL Port號
     }
 }
+
 '''
 DATABASE_URL = os.getenv('postgres://sean940106@gmail.com::Sean50923@workproject-db.fly.dev:8000/workproject')
 DATABASES = {
@@ -123,7 +124,6 @@ DATABASES = {
 #}
 
 
-'''
 DATABASES = {
     "default": env.dj_db_url("DATABASE_URL", default="postgres://sean940106@gmail.com::Sean50923@workproject-db.fly.dev.internal:8000"),
 }
@@ -169,10 +169,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = "/app/function/static/"
+STATIC_URL = "function/static/"
 
 #STATIC_ROOT = BASE_DIR / 'data/staticfiles'
-STATIC_ROOT = "/app/function/static/"
+STATIC_ROOT = "function/static/"
     # Turn on WhiteNoise storage backend that takes care of compressing static files
     # and creating unique names for each version so they can safely be cached forever.
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
