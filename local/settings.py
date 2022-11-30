@@ -34,6 +34,7 @@ DEBUG = True
 
 #ALLOWED_HOSTS = []
 ALLOWED_HOSTS = [
+    '*'
     'xyp-workproject.herokuapp.com/'
 ]
 #CSRF_TRUSTED_ORIGINS = ["https://workproject.fly.dev"]
