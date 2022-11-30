@@ -34,7 +34,7 @@ DEBUG = True
 
 #ALLOWED_HOSTS = []
 ALLOWED_HOSTS = [
-    'urexpenses.herokuapp.com/'
+    'xyp-workproject.herokuapp.com/'
 ]
 #CSRF_TRUSTED_ORIGINS = ["https://workproject.fly.dev"]
 #ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
