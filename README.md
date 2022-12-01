@@ -74,3 +74,6 @@ A:目前猜測是type問題?
 
 Q:將數據庫新增AUTH_USER_MODEL後admin後臺無法操作  
 A:因db中資料django_admin_log還綁在原路徑檔案，所以需要刪除後重新migrate，但在migrate中一直顯示無新增檔案，最後發現似乎是要把平常用的```python manage.py migrate```改成```python manage.py migrate <migrate資料夾所在目錄>```
+
+Q:排版符號顯示不出來  
+A:因為排版符號資源似乎是用網路載入，而該資源目前設定為HTTP傳輸，故若瀏覽器沒開啟允許HTTP傳輸會顯示不出，目前尚不知如何改成HTTPS
