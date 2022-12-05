@@ -1,4 +1,4 @@
-雲端:http://xyp-workproject.herokuapp.com/index/  
+執行頁面:http://xyp-workproject.herokuapp.com/index/  
 
 預計未來新增內容:  
 *權限認證與管理    
