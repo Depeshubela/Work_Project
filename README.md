@@ -1,13 +1,12 @@
 執行頁面:http://xyp-workproject.herokuapp.com/index/  
 
 預計未來新增內容:  
-*權限認證與管理    
-*新增密碼遺失找回  
+*權限認證與管理      
 *評論區功能  
 *站內搜尋功能  
 
 如果排版符號顯示不出請開啟http傳送  
-最後更新:2022/12/04  
+最後更新:2022/12/07  
 ****  
 目前功能大致上分別有login、logout、register、信箱驗證與修改、各視圖URL互連、使用者資料(使用者後臺)
 # 註冊、登入與登出
@@ -16,8 +15,18 @@
 登入部分為呼叫```AuthenticationForm```函數對使用者於login視圖所輸入的帳號密碼做驗證，若有輸入錯誤則顯示錯誤提示，後續以```authenticate```確認使用者輸入資料是否存在資料庫中，如果存在就呼叫login函數登入。  
   
   
+![login](https://user-images.githubusercontent.com/87916115/206184981-6945bdba-daeb-4bec-8d6a-0a0f9f9c2181.png)
   
-![login_register](https://user-images.githubusercontent.com/87916115/204300522-b8c873f6-3eac-4b26-9355-7c8381c11158.png)  
+  
+#使用者密碼找回
+此功能中使用者在未登入時可於登入介面連至遺失密碼，密碼找回頁面  
+由於是未登入狀態，使用者需用註冊時之信箱，並於信箱驗證信內之URL進行密碼更改，更改後即可再次登入。  
+在此功能中主要工作量為研究並修改Django內之各Form函數，使其可以更客製化，讓錯誤判斷等附加功能可以輕易使用，不用從頭設計撰寫。
+
+![resetpassword](https://user-images.githubusercontent.com/87916115/206184036-1905d4f6-c5bc-478b-8a1a-f31a12faf8a9.png)
+![lost_password](https://user-images.githubusercontent.com/87916115/206184026-46c143ee-9401-4d37-b3be-f40edb75dad7.png)
+
+
   
   
 # 部落格首頁
@@ -59,6 +68,14 @@
 在此功能中，使用者可以查閱所有已發布文章，並一樣是以新上舊下的方式排列，上述之修改(Edit)與刪除(Delete)功能也在此做URL連結讓使用者可快速在自己想要編輯的文章上做設定。
 
 ![allpost](https://user-images.githubusercontent.com/87916115/205073098-492d19f9-6b74-4315-90d0-f479793cc7f7.png)
+
+
+##修改使用者資料
+本部落格目前僅有密碼與信箱可供修改，在此後台處修改信箱，需做信箱驗證，而修改密碼則不用信箱驗證，與上述於未登入前之功能有些微差異。 
+
+![pdm](https://user-images.githubusercontent.com/87916115/206184031-f35dfe53-edf5-424a-baac-abed6746e355.png)
+
+
 
 
 ****  
